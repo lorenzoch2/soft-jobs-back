@@ -1,5 +1,4 @@
 const { Pool } = require("pg");
-const format = require("pg-format");
 const bcrypt = require("bcryptjs");
 
 const pool = new Pool({
@@ -9,19 +8,6 @@ const pool = new Pool({
   database: process.env.DB_DATABASE,
   allowExitOnIdle: true,
 });
-
-// const registrarUsuario = async (usuario) => {
-//   const { email, password, rol, lenguage } = usuario;
-//   const passwordEncriptada = bcrypt.hashSync(password, 10);
-//   const consulta = format(
-//     "INSERT INTO usuarios (email, password, rol, lenguage) VALUES (%s, %s, %s, %s) RETURNING *",
-//     email,
-//     passwordEncriptada,
-//     rol,
-//     lenguage
-//   );
-//   await pool.query(consulta);
-// };
 
 const registrarUsuario = async (usuario) => {
   const { email, password, rol, lenguage } = usuario;
